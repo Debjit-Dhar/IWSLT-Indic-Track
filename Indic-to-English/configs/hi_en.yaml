@@ -1,0 +1,65 @@
+# Hindi → English cascaded ST
+source_lang: hi
+target_lang: en
+mt_src_code: hin_Deva
+mt_tgt_code: eng_Latn
+
+asr:
+  model_id: ai4bharat/indicconformer_stt_hi_hybrid_rnnt_large
+  language_id: hi
+  decoder: rnnt
+  decoding_strategy: beam
+  beam_size: 5
+
+mt:
+  base_model_id: ai4bharat/indictrans2-indic-en-1B
+  adapter_path: null  # local LoRA adapter dir after training
+  max_length: 256
+  num_beams: 5
+
+preprocess:
+  target_sr: 16000
+  lowpass_hz: 3000
+  gain_db: 10.0
+
+train:
+  data_dir: null  # IWSLT parallel text root (train/ + dev/)
+  train_split: train
+  eval_split: dev
+  output_dir: outputs/hi_en_lora
+  learning_rate: 2.0e-5
+  per_device_batch_size: 4
+  gradient_accumulation_steps: 1
+  num_train_epochs: 5
+  weight_decay: 0.01
+  fp16: true
+  lora_r: 4
+  lora_alpha: 16
+  lora_dropout: 0.1
+  lora_target_modules: [q_proj, k_proj, v_proj, o_proj]
+  label_smoothing: 0.1
+  dropout: 0.1
+  warmup_ratio: 0.1
+  warmup_steps: 0
+  lr_scheduler_type: polynomial
+  optim: adamw_torch
+  adam_beta1: 0.9
+  adam_beta2: 0.98
+  max_grad_norm: 1.0
+  early_stopping_patience: 5
+  early_stopping_threshold: 0.0
+  metric_for_best_model: BLEU
+  greater_is_better: true
+  generation_num_beams: 5
+  generation_max_length: 256
+  num_workers: 2
+  seed: 42
+
+generation:
+  num_beams: 5
+  max_length: 256
+
+data:
+  audio_dir: null
+  manifest_csv: null
+  split_name: dev

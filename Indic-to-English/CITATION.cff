@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the IWSLT 2025 system paper.
+title: "JU-CSE-NLP's Cascaded Speech to Text Translation Systems for IWSLT 2025 in Indic Track"
+authors:
+  - family-names: Dhar
+    given-names: Debjit
+  - family-names: Lahiri
+    given-names: Soham
+  - family-names: Mondal
+    given-names: Tapabrata
+  - family-names: Bandyopadhyay
+    given-names: Sivaji
+    email: sivaji.cse.ju@gmail.com
+abstract: >-
+  This paper presents the submission of the Jadavpur University Computer Science
+  and Engineering Natural Language Processing (JU-CSE-NLP) Laboratory to the
+  International Conference on Spoken Language Translation (IWSLT) 2025 Indic track.
+keywords:
+  - speech translation
+  - Indic languages
+  - cascaded ASR-MT
+  - IndicConformer
+  - IndicTrans2
+  - IWSLT 2025
+preferred-citation:
+  type: conference-paper
+  title: "JU-CSE-NLP's Cascaded Speech to Text Translation Systems for IWSLT 2025 in Indic Track"
+  authors:
+    - family-names: Dhar
+      given-names: Debjit
+    - family-names: Lahiri
+      given-names: Soham
+    - family-names: Mondal
+      given-names: Tapabrata
+    - family-names: Bandyopadhyay
+      given-names: Sivaji
+  collection-title: "Proceedings of the 22nd International Conference on Spoken Language Translation (IWSLT 2025)"
+  pages: 201-205
+  year: 2025
+  month: 7
+  publisher: Association for Computational Linguistics
+  conference:
+    name: IWSLT 2025
+    date-start: 2025-07-31
+    date-end: 2025-08-01
