@@ -14,7 +14,7 @@ Use each subdirectory as its own package root for install, training, and inferen
 
 Dhar, Lahiri, Mondal, and Bandyopadhyay. *JU-CSE-NLP’s Cascaded Speech to Text Translation Systems for IWSLT 2025 in Indic Track.* In *Proceedings of the 22nd International Conference on Spoken Language Translation (IWSLT 2025)*, pages 201–205. ACL.
 
-See [`CITATION.cff`](CITATION.cff).
+
 ## BibTeX
 
 ```bibtex
