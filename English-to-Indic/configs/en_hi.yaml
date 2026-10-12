@@ -1,0 +1,63 @@
+# English → Hindi cascaded ST
+source_lang: en
+target_lang: hi
+mt_src_code: eng_Latn
+mt_tgt_code: hin_Deva
+
+asr:
+  model_id: openai/whisper-small
+  language_id: en
+  task: transcribe
+  decoding_strategy: beam
+  beam_size: 5
+
+mt:
+  base_model_id: facebook/nllb-200-distilled-600M
+  checkpoint_path: null  # local fine-tuned NLLB dir after training
+  max_length: 256
+  num_beams: 5
+
+preprocess:
+  target_sr: 16000
+  lowpass_hz: 3000
+  gain_db: 10.0
+
+train:
+  data_dir: null  # IWSLT parallel text root (train/ + dev/)
+  train_csv: null  # optional notebook-style CSV ("Source text", "Translated text")
+  eval_csv: null
+  source_column: Source text
+  target_column: Translated text
+  train_split: train
+  eval_split: dev
+  output_dir: outputs/en_hi_nllb
+  learning_rate: 2.0e-5
+  per_device_batch_size: 2
+  gradient_accumulation_steps: 1
+  num_train_epochs: 5
+  weight_decay: 0.01
+  fp16: true
+  warmup_ratio: 0.0
+  warmup_steps: 0
+  lr_scheduler_type: linear
+  optim: adamw_torch
+  max_grad_norm: 1.0
+  early_stopping_patience: 5
+  early_stopping_threshold: 0.0
+  metric_for_best_model: BLEU
+  greater_is_better: true
+  generation_num_beams: 5
+  generation_max_length: 256
+  num_workers: 2
+  seed: 42
+  max_samples: 20000
+  save_total_limit: 2
+
+generation:
+  num_beams: 5
+  max_length: 256
+
+data:
+  audio_dir: null
+  manifest_csv: null
+  split_name: dev
